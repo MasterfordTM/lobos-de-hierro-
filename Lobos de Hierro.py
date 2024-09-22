@@ -56,7 +56,7 @@ class Game:
 
                 if self.enemigo.HP <= 0:
                     messagebox.showinfo("Victoria", f"¡Has derrotado a {self.enemigo.nombre}!")
-                    self.puntaje_total += 4
+                    self.puntaje_total += 100
                     self.current_enemigo_index += 1
                     self.player_clan.HP = self.player_clan.hp_original
                     self.start_battle()
@@ -87,8 +87,7 @@ class Game:
 
 
 def cargar_fondo(frame):
-    fondo = Image.open(
-        r"C:\Users\csarr\OneDrive\Escritorio\codigospy\Lobos de Hierro\pythonProject\imagenes\warhammer_40k-19.jpg")
+    fondo = Image.open( r"C:\Users\csarr\OneDrive\Escritorio\codigospy\Lobos de Hierro\pythonProject\imagenes\warhammer_40k-19.jpg")
     fondo = fondo.resize((800, 600))
     fondo_imagen = ImageTk.PhotoImage(fondo)
 
@@ -129,8 +128,10 @@ def mostrar_bienvenida():
     etiqueta.pack(pady=20)
 
     crear_boton(inner_frame, "Continuar", lambda: [bienvenida.destroy(), mostrar_instrucciones()])
+    iniciar_musica(r"C:\Users\csarr\OneDrive\Escritorio\codigospy\Lobos de Hierro\pythonProject\musica_de_juego.mp3\ytmp3free.cc_rise-up-dead-man-male-and-female-vocal-duet-with-humming-cinematic-video-youtubemp3free.org.mp3")
 
     bienvenida.mainloop()
+
 
 
 def mostrar_instrucciones():
@@ -164,23 +165,29 @@ def mostrar_instrucciones():
     instrucciones.mainloop()
 
 
-def iniciar_musica():
+def iniciar_musica(ruta):
     pygame.mixer.init()
     try:
-      pygame.mixer.music.load(r"C:\Users\csarr\OneDrive\Escritorio\codigospy\Lobos de Hierro\pythonProject\musica_de_juego.mp3\ytmp3free.cc_overture-from-tron-legacyscore-youtubemp3free.org.mp3")
-      pygame.mixer.music.set_volume(0.5)
-      pygame.mixer.music.play(-1)
+        pygame.mixer.music.load(ruta)
+        pygame.mixer.music.set_volume(0.5)
+        pygame.mixer.music.play(-1)
     except pygame.error:
-             messagebox.showerror("Error", "No se pudo cargar el archivo de música. Verifica la ruta.")
+        messagebox.showerror("Error", "No se pudo cargar el archivo de música. Verifica la ruta.")
+
+
+def detener_musica():
+    pygame.mixer.music.stop()
 
 
 def mostrar_ventana_principal():
     global root, game
+    detener_musica()
     root = tk.Tk()
     root.title("Lobos de Hierro")
     root.geometry("800x600")
+    iniciar_musica(r"C:\Users\csarr\OneDrive\Escritorio\codigospy\Lobos de Hierro\pythonProject\musica_de_juego.mp3\ytmp3free.cc_its-dark-in-new-orleans-youtubemp3free.org.mp3")
 
-    iniciar_musica()
+
 
     game = Game()
 
