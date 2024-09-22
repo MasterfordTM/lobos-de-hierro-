@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import messagebox
-from PIL import Image, ImageTk
 import pygame
 import random
 
@@ -97,10 +96,7 @@ def mostrar_bienvenida():
     frame = tk.Frame(bienvenida)
     frame.pack(fill="both", expand=True)
     # Cargar la imagen
-    img_path = r"C:\Users\csarr\OneDrive\Escritorio\codigospy\Lobos de Hierro\pythonProject\imagenes\OIP.jpg"
-    img = Image.open(img_path)
-    img = img.resize((800, 600), Image.LANCZOS)  # Ajustar el tamaño de la imagen
-    img_tk = ImageTk.PhotoImage(img)
+
 
 
     inner_frame = tk.Frame(frame, padx=20, pady=20)
