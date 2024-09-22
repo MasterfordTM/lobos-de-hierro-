@@ -187,7 +187,7 @@ def mostrar_ventana_principal():
     root.geometry("800x600")
     iniciar_musica(r"C:\Users\csarr\OneDrive\Escritorio\codigospy\Lobos de Hierro\pythonProject\musica_de_juego.mp3\ytmp3free.cc_its-dark-in-new-orleans-youtubemp3free.org.mp3")
 
-
+    cargar_fondo(root)
 
     game = Game()
 
