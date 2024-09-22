@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
+from PIL import Image, ImageTk
+import pygame
 import random
 
 
@@ -94,6 +96,12 @@ def mostrar_bienvenida():
 
     frame = tk.Frame(bienvenida)
     frame.pack(fill="both", expand=True)
+    # Cargar la imagen
+    img_path = r"C:\Users\csarr\OneDrive\Escritorio\codigospy\Lobos de Hierro\pythonProject\imagenes\OIP.jpg"
+    img = Image.open(img_path)
+    img = img.resize((800, 600), Image.LANCZOS)  # Ajustar el tamaño de la imagen
+    img_tk = ImageTk.PhotoImage(img)
+
 
     inner_frame = tk.Frame(frame, padx=20, pady=20)
     inner_frame.pack(expand=True)
@@ -143,12 +151,22 @@ def mostrar_instrucciones():
     instrucciones.mainloop()
 
 
+def iniciar_musica():
+    pygame.mixer.init()
+    pygame.mixer.music.load(r"C:\Users\csarr\OneDrive\Escritorio\codigospy\Lobos de Hierro\pythonProject\musica_de_juego.mp3\ytmp3free.cc_overture-from-tron-legacyscore-youtubemp3free.org.mp3")
+    pygame.mixer.music.set_volume(0.5)# Cambia a la ruta correcta
+    pygame.mixer.music.play(-1)  # Reproduce en bucle
+
+
 # ventana principal
 def mostrar_ventana_principal():
     global root, game
     root = tk.Tk()
     root.title("Lobos de Hierro")
     root.geometry("800x600")
+
+    iniciar_musica()
+
 
     game = Game()
 
