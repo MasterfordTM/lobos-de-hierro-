@@ -202,5 +202,5 @@ def inicio_juego():
     game.start_game()
 
 
-# Iniciar mostrando la ventana de bienvenida
+# Iniciar mostrando la ventana de bienvenida 
 mostrar_bienvenida()
