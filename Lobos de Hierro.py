@@ -86,14 +86,7 @@ class Game:
         messagebox.showinfo("Puntaje Total", f"Tu puntaje total es: {self.puntaje_total}")
 
 
-def cargar_fondo(frame):
-    fondo = Image.open( r"C:\Users\csarr\OneDrive\Escritorio\codigospy\Lobos de Hierro\pythonProject\imagenes\warhammer_40k-19.jpg")
-    fondo = fondo.resize((800, 600))
-    fondo_imagen = ImageTk.PhotoImage(fondo)
 
-    etiqueta_fondo = tk.Label(frame, image=fondo_imagen)
-    etiqueta_fondo.image = fondo_imagen
-    etiqueta_fondo.place(x=0, y=0, relwidth=1, relheight=1)
 
 
 def cambiar_color_hover(btn, color):
@@ -118,7 +111,7 @@ def mostrar_bienvenida():
 
     frame = tk.Frame(bienvenida)
     frame.pack(fill="both", expand=True)
-    cargar_fondo(frame)
+
 
     inner_frame = tk.Frame(frame, padx=20, pady=20)
     inner_frame.pack(expand=True)
@@ -187,7 +180,6 @@ def mostrar_ventana_principal():
     root.geometry("800x600")
     iniciar_musica(r"C:\Users\csarr\OneDrive\Escritorio\codigospy\Lobos de Hierro\pythonProject\musica_de_juego.mp3\ytmp3free.cc_its-dark-in-new-orleans-youtubemp3free.org.mp3")
 
-    cargar_fondo(root)
 
     game = Game()
 
@@ -202,5 +194,5 @@ def inicio_juego():
     game.start_game()
 
 
-# Iniciar mostrando la ventana de bienvenida 
+# Iniciar mostrando la ventana de bienvenida
 mostrar_bienvenida()
